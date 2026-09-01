@@ -1,172 +1,400 @@
-/* ==========================================================
-   Riska Devi — Custom Stylesheet
-   Melengkapi Tailwind CDN untuk efek-efek khusus
-   ========================================================== */
+/* ==========================================================================
+   RISKA DEVI - PORTFOLIO MOTION GRAPHICS & MODERN DESIGN SYSTEM
+   ========================================================================== */
 
-html {
-  scroll-behavior: smooth;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+    --theme-primary: #ec4899;
+    --theme-primary-rgb: 236, 72, 153;
+    --theme-secondary: #8b5cf6;
+    --theme-secondary-rgb: 139, 92, 246;
+    --theme-accent: #06b6d4;
+    --theme-accent-rgb: 6, 182, 212;
+    --bg-dark: #090d16;
+    --card-bg: rgba(15, 23, 42, 0.75);
+    --card-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', sans-serif;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-dark);
+    color: #f1f5f9;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.font-heading,
-h1, h2, h3 {
-  font-family: 'Outfit', sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--theme-primary), var(--theme-secondary));
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #f43f5e, #a855f7);
 }
 
-/* ---------- Glassmorphism ---------- */
-.glass-nav {
-  background: rgba(15, 18, 30, 0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* --------------------------------------------------------------------------
+   GRADIENTS & TEXT SHIMMER
+   -------------------------------------------------------------------------- */
+.text-gradient {
+    background: linear-gradient(135deg, #f472b6 0%, #a78bfa 45%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: textShimmer 6s linear infinite;
 }
 
+.text-gradient-gold {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #f97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+    background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes textShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --------------------------------------------------------------------------
+   GLASSMORPHISM & GLOW EFFECTS
+   -------------------------------------------------------------------------- */
 .glass-card {
-  background: rgba(20, 24, 38, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(236, 72, 153, 0.35);
-  box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.25);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px -15px rgba(var(--theme-secondary-rgb), 0.25);
 }
 
-/* ---------- Spotlight cursor follower ---------- */
-.spotlight-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 480px;
-  height: 480px;
-  border-radius: 9999px;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.12), transparent 70%);
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  transition: opacity 0.3s ease;
-  will-change: transform;
+.glass-nav {
+    background: rgba(10, 15, 29, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ---------- Buttons ---------- */
-.magnetic-btn {
-  transition: transform 0.25s ease;
+/* Conic Glowing Border Card */
+.glow-border-card {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.btn-glow {
-  position: relative;
-  overflow: hidden;
+.glow-border-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent,
+        rgba(var(--theme-primary-rgb), 0.4),
+        rgba(var(--theme-secondary-rgb), 0.6),
+        rgba(var(--theme-accent-rgb), 0.4),
+        transparent 60%
+    );
+    animation: rotateGlow 8s linear infinite;
+    z-index: -2;
 }
 
-.btn-glow::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background: inherit;
-  filter: blur(14px);
-  opacity: 0.55;
-  z-index: -1;
+.glow-border-card::after {
+    content: '';
+    position: absolute;
+    inset: 1.5px;
+    background: #0d1322;
+    border-radius: calc(1.5rem - 1.5px);
+    z-index: -1;
 }
 
-/* ---------- Card tilt (JS-driven transform target) ---------- */
+@keyframes rotateGlow {
+    100% { transform: rotate(1turn); }
+}
+
+/* --------------------------------------------------------------------------
+   3D PERSPECTIVE & TILT CARDS
+   -------------------------------------------------------------------------- */
 .tilt-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+    will-change: transform;
 }
 
-/* ---------- Scroll-reveal (used by main.js / IntersectionObserver) ---------- */
-.gsap-card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+.tilt-inner {
+    transform: translateZ(35px);
+    transform-style: preserve-3d;
 }
 
-.gsap-card.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.tilt-inner-deep {
+    transform: translateZ(55px);
 }
 
-/* ---------- Modal ---------- */
-.modal-overlay.is-open {
-  opacity: 1 !important;
-  pointer-events: auto !important;
+/* --------------------------------------------------------------------------
+   3D FLIP CERTIFICATE CARDS
+   -------------------------------------------------------------------------- */
+.flip-card-container {
+    perspective: 1200px;
 }
 
-.modal-content-box {
-  transform: scale(0.92);
-  opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.modal-overlay.is-open .modal-content-box {
-  transform: scale(1);
-  opacity: 1;
+.flip-card-container:hover .flip-card-inner,
+.flip-card-container.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
 }
 
-/* ---------- Timeline laser ---------- */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.5rem;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE SPOTLIGHT & AMBIENT GLOW
+   -------------------------------------------------------------------------- */
+.spotlight-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--theme-secondary-rgb), 0.12) 0%, rgba(var(--theme-primary-rgb), 0.04) 45%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   ANIMATED TIMELINE LASER
+   -------------------------------------------------------------------------- */
+.timeline-track {
+    position: relative;
+}
+
 .timeline-laser-line {
-  position: relative;
-  width: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  overflow: hidden;
-  margin: 0 auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
 }
 
 .timeline-laser-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(180deg, #ec4899, #a855f7, #06b6d4);
-  border-radius: 999px;
-  transition: height 0.15s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to bottom, var(--theme-primary), var(--theme-secondary), var(--theme-accent));
+    box-shadow: 0 0 12px var(--theme-primary), 0 0 20px var(--theme-secondary);
+    border-radius: 9999px;
+    transition: height 0.2s ease-out;
 }
 
-/* ---------- Toast ---------- */
+@media (min-width: 768px) {
+    .timeline-laser-line {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Pulse Node Indicator */
+.pulse-node {
+    position: relative;
+}
+
+.pulse-node::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    background: inherit;
+    opacity: 0.4;
+    animation: nodePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    z-index: -1;
+}
+
+@keyframes nodePulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.8); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   FLOATING ELEMENTS & ORBS
+   -------------------------------------------------------------------------- */
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(12px) rotate(-2deg); }
+}
+
+.animate-float-slow {
+    animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+    animation: floatReverse 6s ease-in-out infinite;
+}
+
+/* Glowing Aura behind Hero */
+.hero-aura {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(var(--theme-primary-rgb), 0.3), rgba(var(--theme-secondary-rgb), 0.3), rgba(var(--theme-accent-rgb), 0.3));
+    filter: blur(50px);
+    border-radius: 2rem;
+    z-index: -1;
+    animation: auraPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes auraPulse {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    100% { transform: scale(1.08); opacity: 0.85; }
+}
+
+/* --------------------------------------------------------------------------
+   MAGNETIC BUTTONS & RIPPLE
+   -------------------------------------------------------------------------- */
+.magnetic-btn {
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+    will-change: transform;
+}
+
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-glow::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(45deg) translateY(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn-glow:hover::after {
+    transform: rotate(45deg) translateY(100%);
+}
+
+/* --------------------------------------------------------------------------
+   LIGHTBOX MODAL
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay .modal-content-box {
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.active .modal-content-box {
+    transform: scale(1) translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   CATEGORY FILTER TABS TRANSITION
+   -------------------------------------------------------------------------- */
+.gallery-item {
+    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item.hidden-item {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+    pointer-events: none;
+    position: absolute;
+    visibility: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   TOAST NOTIFICATION
+   -------------------------------------------------------------------------- */
 .toast-notification {
-  opacity: 0;
-  transform: translate(-50%, 20px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+    transform: translateY(100px) scale(0.9);
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.toast-notification.is-visible {
-  opacity: 1;
-  transform: translate(-50%, 0);
+.toast-notification.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
 }
 
-/* ---------- Mobile drawer ---------- */
-#mobileDrawer.is-open {
-  transform: translateX(0);
-}
-
-/* ---------- Testimonial ---------- */
+/* --------------------------------------------------------------------------
+   TESTIMONIAL SLIDER ANIMATIONS
+   -------------------------------------------------------------------------- */
 .testimonial-slide {
-  transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* ---------- Misc scrollbar polish ---------- */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0b0e18;
-}
-::-webkit-scrollbar-thumb {
-  background: #ec4899;
-  border-radius: 999px;
-}
-
-/* ---------- Particle canvas ---------- */
-#particleCanvas {
-  width: 100%;
-  height: 100%;
+/* --------------------------------------------------------------------------
+   ACCESSIBILITY: PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
