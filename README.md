@@ -1,1 +1,0 @@
-# Riska-Devi
