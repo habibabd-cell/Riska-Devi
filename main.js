@@ -10,8 +10,52 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- 1. Lucide Icons ---------- */
   if (window.lucide) lucide.createIcons();
 
-  /* ---------- 2. Toast Notification (no-op jika elemen tidak ada) ---------- */
-  window.showToast = function () {};
+  /* ---------- 2. Toast Notification ---------- */
+  const toastNotification = document.getElementById('toastNotification');
+  const toastMessage = document.getElementById('toastMessage');
+  let toastTimeout;
+
+  window.showToast = function (message) {
+    if (!toastNotification) return;
+    if (message && toastMessage) toastMessage.textContent = message;
+    toastNotification.classList.add('is-visible');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toastNotification.classList.remove('is-visible');
+    }, 2500);
+  };
+
+  /* ---------- 2b. Copy to Clipboard (Email / WhatsApp / dsb) ---------- */
+  window.copyToClipboard = function (text, label) {
+    const name = label || 'Teks';
+    const onSuccess = () => showToast(name + ' berhasil disalin!');
+    const onError = () => showToast('Gagal menyalin, coba lagi.');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+        fallbackCopy(text, onSuccess, onError);
+      });
+    } else {
+      fallbackCopy(text, onSuccess, onError);
+    }
+  };
+
+  function fallbackCopy(text, onSuccess, onError) {
+    try {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      ok ? onSuccess() : onError();
+    } catch (e) {
+      onError();
+    }
+  }
 
   /* ---------- 4. Mobile Menu Drawer ---------- */
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
