@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riska Devi | Portofolio Interaktif & Creative Motion</title>
     <meta name="description" content="Portofolio resmi Riska Devi - Matematika, Digital Creative, Public Speaker, Petugas BPS 2026, dan Social Activist.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Open Graph & Social Media SEO -->
+    <meta property="og:title" content="Riska Devi | Portofolio Interaktif & Creative Motion">
+    <meta property="og:description" content="Portofolio resmi Riska Devi - Matematika, Digital Creative, Public Speaker, Petugas BPS 2026, dan Social Activist.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/riska-profile-hero.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Riska Devi | Portofolio Interaktif & Creative Motion">
+    <meta name="twitter:description" content="Portofolio resmi Riska Devi - Matematika, Digital Creative, Public Speaker, Petugas BPS 2026, dan Social Activist.">
+    <meta name="twitter:image" content="assets/images/riska-profile-hero.jpg">
+
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -185,7 +199,7 @@
                         <i data-lucide="map-pin" class="w-4 h-4 text-pink-400"></i>
                         <span>Tambang, Kampar, Riau</span>
                     </div>
-                    <button class="flex items-center gap-2 bg-slate-800/60 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-700/60 hover:border-cyan-500/40 text-slate-300 transition">
+                    <button onclick="copyToClipboard('+6282383542435', 'Nomor WhatsApp')" class="flex items-center gap-2 bg-slate-800/60 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-700/60 hover:border-cyan-500/40 text-slate-300 transition">
                         <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
                         <span>+62 823-8354-2435</span>
                         <i data-lucide="copy" class="w-3 h-3 text-slate-500"></i>
@@ -221,7 +235,7 @@
 
                 <!-- Main Photo Card with 3D Tilt -->
                 <div class="tilt-card relative h-[440px] rounded-3xl overflow-hidden border-2 border-slate-700/80 hover:border-pink-500/60 shadow-2xl transition duration-500 group bg-slate-800/80">
-                    <img src="assets/images/img_001.jpg" alt="Riska Devi" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <img src="assets/images/riska-profile-hero.jpg" alt="Riska Devi" fetchpriority=\"high\" decoding=\"async\" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
                     
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                     
@@ -365,7 +379,7 @@
                 <!-- Photo 1: KDMI Debat Champion -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="prestasi">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_002.jpg" alt="Pembicara Terbaik I KDMI FMIPA 2026" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-pembicara-terbaik-kdmi.jpg" alt="Pembicara Terbaik I KDMI FMIPA 2026" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-pink-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-pink-500/30">KDMI 2026</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-yellow-300 flex items-center gap-1.5">
@@ -385,7 +399,7 @@
                 <!-- Photo 2: Petugas Pencacah Lapangan BPS 2026 -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="bps">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_003.jpg" alt="Petugas Pencacah Lapangan BPS 2026" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-bps-lapangan.jpg" alt="Petugas Pencacah Lapangan BPS 2026" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-cyan-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-cyan-500/30">BPS 2026</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-cyan-300 flex items-center gap-1.5">
@@ -405,7 +419,7 @@
                 <!-- Photo 3: Master of Ceremony Pekan Gembira Anak -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="speaking">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_004.jpg" alt="Master of Ceremony Pekan Gembira Anak" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-mc-lapangan.jpg" alt="Master of Ceremony Pekan Gembira Anak" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-emerald-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-emerald-500/30">MC Lapangan</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-emerald-300 flex items-center gap-1.5">
@@ -425,7 +439,7 @@
                 <!-- Photo 4: Training of Trainers / Workshop Forum Anak -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="speaking">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_005.jpg" alt="Training of Trainers Forum Anak" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-tot-forum-anak.jpg" alt="Training of Trainers Forum Anak" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-purple-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-purple-500/30">Forum Anak</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-purple-300 flex items-center gap-1.5">
@@ -445,7 +459,7 @@
                 <!-- Photo 5: Narasumber PKKMB FMIPA UNRI 2026 -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="speaking">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_006.jpg" alt="Narasumber PKKMB FMIPA UNRI 2026" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-narasumber-pkkmb.jpg" alt="Narasumber PKKMB FMIPA UNRI 2026" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-blue-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-blue-500/30">PKKMB 2026</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-blue-300 flex items-center gap-1.5">
@@ -465,7 +479,7 @@
                 <!-- Photo 6: Volunteer & Fully Funded IYES Foundation -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="volunteer">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_007.jpg" alt="Champion for Peace IYES Foundation" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-volunteer-iyes.jpg" alt="Champion for Peace IYES Foundation" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-teal-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-teal-500/30">IYES Foundation</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-teal-300 flex items-center gap-1.5">
@@ -485,7 +499,7 @@
                 <!-- Photo 7: Kegiatan Kebudayaan Melayu Songket Outdoor -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="volunteer">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_008.jpg" alt="Riska Devi Kebudayaan Melayu Songket" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-songket-budaya.jpg" alt="Riska Devi Kebudayaan Melayu Songket" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-amber-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-amber-500/30">Songket Melayu</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-amber-300 flex items-center gap-1.5">
@@ -505,7 +519,7 @@
                 <!-- Photo 8: Kebudayaan & Delegasi Formal Melayu -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="volunteer">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_009.jpg" alt="Riska Devi Kebudayaan Melayu" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-budaya-formal.jpg" alt="Riska Devi Kebudayaan Melayu" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-indigo-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-indigo-500/30">Budaya & Formal</div>
                     </div>
@@ -522,7 +536,7 @@
                 <!-- Photo 9: Profil Kreatif & Social Worker -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="prestasi">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_010.jpg" alt="Riska Devi Profil" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-profile-hero.jpg" alt="Riska Devi Profil" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-pink-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-pink-500/30">Profil 2026</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-pink-300 flex items-center gap-1.5">
@@ -542,7 +556,7 @@
                 <!-- Photo 10: Volunteer Penanaman Mangrove -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="volunteer">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_011.jpg" alt="Volunteer Penanaman Mangrove IYES Foundation" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-mangrove-iyes.jpg" alt="Volunteer Penanaman Mangrove IYES Foundation" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-teal-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-teal-500/30">Aksi Lingkungan</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-teal-300 flex items-center gap-1.5">
@@ -562,7 +576,7 @@
                 <!-- Photo 11: Champions for Peace Indonesia Forum -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="prestasi">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_012.jpg" alt="Champions for Peace Indonesia Forum" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-peace-forum.jpg" alt="Champions for Peace Indonesia Forum" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-rose-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-rose-500/30">Champions for Peace</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-rose-300 flex items-center gap-1.5">
@@ -582,7 +596,7 @@
                 <!-- Photo 12: Perjalanan Delegasi Kongres Anak Indonesia -->
                 <div class="gallery-item gsap-card tilt-card glass-card rounded-3xl overflow-hidden group cursor-pointer open-lightbox" data-category="volunteer">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="assets/images/img_013.jpg" alt="Perjalanan Delegasi Kongres Anak Indonesia" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700">
+                        <img src="assets/images/riska-delegasi-kai.jpg" alt="Perjalanan Delegasi Kongres Anak Indonesia" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                         <div class="card-badge absolute top-3 right-3 bg-sky-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-lg shadow-sky-500/30">Perjalanan Dinas</div>
                         <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-xl text-[11px] font-semibold text-sky-300 flex items-center gap-1.5">
@@ -1328,7 +1342,7 @@
                     </div>
 
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <button class="glass-card p-5 rounded-2xl text-left group hover:border-pink-500/50 transition">
+                        <button onclick="copyToClipboard('riskadevil404@gmail.com', 'Email')" class="glass-card p-5 rounded-2xl text-left group hover:border-pink-500/50 transition">
                             <div class="flex items-center gap-3 mb-2">
                                 <div class="w-9 h-9 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center">
                                     <i data-lucide="mail" class="w-4 h-4"></i>
@@ -1491,6 +1505,12 @@
         </svg>
         <i data-lucide="chevron-up" class="w-4 h-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white"></i>
     </button>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="toast-notification fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-slate-900/95 border border-pink-500/50 text-white px-6 py-3 rounded-full shadow-2xl shadow-pink-500/30 flex items-center gap-3 backdrop-blur-xl pointer-events-none">
+        <span class="p-1 rounded-full bg-pink-500/20 text-pink-400"><i data-lucide="check" class="w-4 h-4"></i></span>
+        <span id="toastMessage" class="text-xs font-semibold">Teks berhasil disalin!</span>
+    </div>
 
     <!-- Custom Main JS -->
     <script src="assets/js/main.js"></script>
