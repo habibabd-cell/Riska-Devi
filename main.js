@@ -10,34 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- 1. Lucide Icons ---------- */
   if (window.lucide) lucide.createIcons();
 
-  /* ---------- 2. Toast Notification ---------- */
-  const toastEl = document.getElementById('toastNotification');
-  const toastMsgEl = document.getElementById('toastMessage');
-  let toastTimer;
-
-  window.showToast = function (message) {
-    if (!toastEl) return;
-    if (toastMsgEl) toastMsgEl.textContent = message;
-    toastEl.classList.add('is-visible');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 2600);
-  };
-
-  /* ---------- 3. Copy to Clipboard ---------- */
-  window.copyToClipboard = function (text, label) {
-    const done = () => showToast((label || 'Teks') + ' berhasil disalin!');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done).catch(done);
-    } else {
-      const temp = document.createElement('textarea');
-      temp.value = text;
-      document.body.appendChild(temp);
-      temp.select();
-      try { document.execCommand('copy'); } catch (e) {}
-      document.body.removeChild(temp);
-      done();
-    }
-  };
+  /* ---------- 2. Toast Notification (no-op jika elemen tidak ada) ---------- */
+  window.showToast = function () {};
 
   /* ---------- 4. Mobile Menu Drawer ---------- */
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
