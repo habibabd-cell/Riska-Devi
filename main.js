@@ -10,52 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- 1. Lucide Icons ---------- */
   if (window.lucide) lucide.createIcons();
 
-  /* ---------- 2. Toast Notification ---------- */
-  const toastNotification = document.getElementById('toastNotification');
-  const toastMessage = document.getElementById('toastMessage');
-  let toastTimeout;
-
-  window.showToast = function (message) {
-    if (!toastNotification) return;
-    if (message && toastMessage) toastMessage.textContent = message;
-    toastNotification.classList.add('is-visible');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
-      toastNotification.classList.remove('is-visible');
-    }, 2500);
-  };
-
-  /* ---------- 2b. Copy to Clipboard (Email / WhatsApp / dsb) ---------- */
-  window.copyToClipboard = function (text, label) {
-    const name = label || 'Teks';
-    const onSuccess = () => showToast(name + ' berhasil disalin!');
-    const onError = () => showToast('Gagal menyalin, coba lagi.');
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
-        fallbackCopy(text, onSuccess, onError);
-      });
-    } else {
-      fallbackCopy(text, onSuccess, onError);
-    }
-  };
-
-  function fallbackCopy(text, onSuccess, onError) {
-    try {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.focus();
-      textarea.select();
-      const ok = document.execCommand('copy');
-      document.body.removeChild(textarea);
-      ok ? onSuccess() : onError();
-    } catch (e) {
-      onError();
-    }
-  }
+  /* ---------- 2. Toast Notification (no-op jika elemen tidak ada) ---------- */
+  window.showToast = function () {};
 
   /* ---------- 4. Mobile Menu Drawer ---------- */
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -137,15 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* ---------- 7b. Flip Cards (Sertifikat) — tap to flip on touch devices ---------- */
-  document.querySelectorAll('.flip-card-container').forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Don't flip when a button inside the card (e.g. "Lihat Piagam Digital") is clicked
-      if (e.target.closest('button')) return;
-      card.classList.toggle('is-flipped');
-    });
-  });
-
   /* ---------- 8. Gallery Filter ---------- */
   const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
@@ -203,32 +150,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.15 });
   revealTargets.forEach(el => io.observe(el));
 
-  function startCountersOnce() {
-    if (countersStarted) return;
-    countersStarted = true;
-    animateCounters();
-  }
-
   if (statsSection) {
-    // Lower threshold + negative bottom margin so the counters reliably fire on
-    // smaller/mobile viewports where the stats grid rarely covers 40% of the screen.
     const statsIo = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          startCountersOnce();
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          animateCounters();
           statsIo.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    }, { threshold: 0.4 });
     statsIo.observe(statsSection);
-
-    // Fallback: if the stats section is already visible on initial load
-    // (e.g. short page, tall viewport), the observer may fire late or not
-    // at all on some mobile browsers — check immediately as a safety net.
-    const rect = statsSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      startCountersOnce();
-    }
   }
 
   /* ---------- 11. Timeline Laser Fill ---------- */
